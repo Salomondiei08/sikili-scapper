@@ -195,10 +195,12 @@ export async function scrapePrices(modelId: string): Promise<PriceInfo[]> {
     const retailers = [
         // USA
         { name: "Apple Store USA", url: "https://apple.com", country: "United States", code: "US", currency: "USD" },
-        { name: "Best Buy", url: "https://bestbuy.com", country: "United States", code: "US", currency: "USD" },
-        { name: "Amazon US", url: "https://amazon.com", country: "United States", code: "US", currency: "USD" },
-        { name: "B&H Photo", url: "https://bhphotovideo.com", country: "United States", code: "US", currency: "USD" },
-        { name: "Back Market US", url: "https://backmarket.com", country: "United States", code: "US", currency: "USD" },
+        // Global / US
+        { name: "Amazon", url: "https://www.amazon.com", country: "United States", code: "US", currency: "USD" },
+        { name: "Apple Store", url: "https://www.apple.com", country: "United States", code: "US", currency: "USD" },
+        { name: "Best Buy", url: "https://www.bestbuy.com", country: "United States", code: "US", currency: "USD" },
+        { name: "Back Market", url: "https://www.backmarket.com", country: "United States", code: "US", currency: "USD" },
+        { name: "eBay US", url: "https://www.ebay.com", country: "United States", code: "US", currency: "USD" },
 
         // UK
         { name: "Apple Store UK", url: "https://apple.com/uk", country: "United Kingdom", code: "GB", currency: "GBP" },
@@ -211,6 +213,7 @@ export async function scrapePrices(modelId: string): Promise<PriceInfo[]> {
         { name: "MediaMarkt", url: "https://mediamarkt.de", country: "Germany", code: "DE", currency: "EUR" },
         { name: "Amazon FR", url: "https://www.amazon.fr", country: "France", code: "FR", currency: "EUR" },
         { name: "Fnac", url: "https://www.fnac.com", country: "France", code: "FR", currency: "EUR" },
+        { name: "eBay DE", url: "https://www.ebay.de", country: "Germany", code: "DE", currency: "EUR" },
 
         // Asia
         { name: "Apple Store Japan", url: "https://apple.com/jp", country: "Japan", code: "JP", currency: "JPY" },
@@ -219,22 +222,23 @@ export async function scrapePrices(modelId: string): Promise<PriceInfo[]> {
         // Oceania
         { name: "Apple Store Australia", url: "https://apple.com/au", country: "Australia", code: "AU", currency: "AUD" },
         { name: "JB Hi-Fi", url: "https://jbhifi.com.au", country: "Australia", code: "AU", currency: "AUD" },
+        { name: "eBay AU", url: "https://www.ebay.com.au", country: "Australia", code: "AU", currency: "AUD" },
 
         // North America
         { name: "Apple Store Canada", url: "https://apple.com/ca", country: "Canada", code: "CA", currency: "CAD" },
         { name: "Best Buy Canada", url: "https://bestbuy.ca", country: "Canada", code: "CA", currency: "CAD" },
 
         // Africa - West Africa (XOF)
-        { name: "Jumia Senegal", url: "https://jumia.sn", country: "Senegal", code: "SN", currency: "XOF" },
+        { name: "Jumia Senegal", url: "https://www.jumia.sn", country: "Senegal", code: "SN", currency: "XOF" },
         { name: "Expat-Dakar", url: "https://expat-dakar.com", country: "Senegal", code: "SN", currency: "XOF" },
-        { name: "Jumia Côte d'Ivoire", url: "https://jumia.ci", country: "Côte d'Ivoire", code: "CI", currency: "XOF" },
+        { name: "Jumia Côte d'Ivoire", url: "https://www.jumia.ci", country: "Côte d'Ivoire", code: "CI", currency: "XOF" },
 
         // Africa - Nigeria (NGN)
-        { name: "Jumia Nigeria", url: "https://jumia.com.ng", country: "Nigeria", code: "NG", currency: "NGN" },
+        { name: "Jumia Nigeria", url: "https://www.jumia.com.ng", country: "Nigeria", code: "NG", currency: "NGN" },
         { name: "Slot Nigeria", url: "https://slot.ng", country: "Nigeria", code: "NG", currency: "NGN" },
 
         // Africa - Kenya (KES)
-        { name: "Jumia Kenya", url: "https://jumia.co.ke", country: "Kenya", code: "KE", currency: "KES" },
+        { name: "Jumia Kenya", url: "https://www.jumia.co.ke", country: "Kenya", code: "KE", currency: "KES" },
         { name: "Safaricom Shop", url: "https://safaricom.co.ke", country: "Kenya", code: "KE", currency: "KES" },
 
         // Africa - South Africa (ZAR)
@@ -242,10 +246,10 @@ export async function scrapePrices(modelId: string): Promise<PriceInfo[]> {
         { name: "Incredible Connection", url: "https://incredible.co.za", country: "South Africa", code: "ZA", currency: "ZAR" },
 
         // Africa - Egypt (EGP)
-        { name: "Jumia Egypt", url: "https://jumia.com.eg", country: "Egypt", code: "EG", currency: "EGP" },
+        { name: "Jumia Egypt", url: "https://www.jumia.com.eg", country: "Egypt", code: "EG", currency: "EGP" },
 
         // Africa - Morocco (MAD)
-        { name: "Jumia Morocco", url: "https://jumia.ma", country: "Morocco", code: "MA", currency: "MAD" },
+        { name: "Jumia Morocco", url: "https://www.jumia.ma", country: "Morocco", code: "MA", currency: "MAD" },
     ];
 
     const pricePromises = retailers.map(async (retailer, index) => {
@@ -258,9 +262,12 @@ export async function scrapePrices(modelId: string): Promise<PriceInfo[]> {
         } else if (retailer.name.includes("Apple")) {
             deepLink = `${retailer.url}/shop/buy-iphone/${modelId.split('-').slice(0, 2).join('-')}`;
         } else if (retailer.name.includes("Jumia")) {
-            deepLink = `${retailer.url}/${productPath}.html`;
+            // Jumia URLs often look like: https://www.jumia.com.ng/iphone-15-pro-max-1tb-blue-titanium-apple-mpg345678.html
+            deepLink = `${retailer.url}/${productPath}-catalog-product.html`;
         } else if (retailer.name.includes("Back Market")) {
             deepLink = `${retailer.url}/p/${productPath}`;
+        } else if (retailer.name.includes("eBay")) {
+            deepLink = `${retailer.url}/sch/i.html?_nkw=${productPath.replace(/-/g, '+')}`;
         } else {
             deepLink = `${retailer.url}/product/${productPath}`;
         }

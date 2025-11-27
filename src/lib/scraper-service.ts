@@ -4,6 +4,8 @@ import { AmazonScraper } from './scrapers/amazon';
 import { AppleScraper } from './scrapers/apple';
 import { BestBuyScraper } from './scrapers/bestbuy';
 import { BackMarketScraper } from './scrapers/backmarket';
+import { JumiaScraper } from './scrapers/jumia';
+import { EbayScraper } from './scrapers/ebay';
 
 /**
  * Service to manage web scraping operations
@@ -22,6 +24,8 @@ export class ScraperService {
         this.registerScraper(new AppleScraper());
         this.registerScraper(new BestBuyScraper());
         this.registerScraper(new BackMarketScraper());
+        this.registerScraper(new JumiaScraper());
+        this.registerScraper(new EbayScraper());
     }
 
     /**
