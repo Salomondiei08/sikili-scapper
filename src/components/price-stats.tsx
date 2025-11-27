@@ -3,6 +3,7 @@
 import { PriceInfo, PriceStatistics } from "@/lib/types"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { TrendingDown, TrendingUp, DollarSign, BarChart3 } from "lucide-react"
+import { formatCurrency } from "@/lib/utils"
 
 interface PriceStatsProps {
     prices: PriceInfo[];
@@ -42,25 +43,25 @@ export function PriceStats({ prices, targetCurrency, exchangeRates }: PriceStats
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <StatCard
                 title="Lowest Price"
-                value={`${getCurrencySymbol(targetCurrency)}${stats.lowest.toFixed(2)}`}
+                value={formatCurrency(stats.lowest, targetCurrency, getCurrencySymbol(targetCurrency))}
                 icon={<TrendingDown className="h-5 w-5 text-primary" />}
                 color="primary"
             />
             <StatCard
                 title="Average Price"
-                value={`${getCurrencySymbol(targetCurrency)}${stats.average.toFixed(2)}`}
+                value={formatCurrency(stats.average, targetCurrency, getCurrencySymbol(targetCurrency))}
                 icon={<DollarSign className="h-5 w-5 text-accent" />}
                 color="accent"
             />
             <StatCard
                 title="Median Price"
-                value={`${getCurrencySymbol(targetCurrency)}${stats.median.toFixed(2)}`}
+                value={formatCurrency(stats.median, targetCurrency, getCurrencySymbol(targetCurrency))}
                 icon={<BarChart3 className="h-5 w-5 text-muted-foreground" />}
                 color="muted"
             />
             <StatCard
                 title="Highest Price"
-                value={`${getCurrencySymbol(targetCurrency)}${stats.highest.toFixed(2)}`}
+                value={formatCurrency(stats.highest, targetCurrency, getCurrencySymbol(targetCurrency))}
                 icon={<TrendingUp className="h-5 w-5 text-destructive" />}
                 color="destructive"
             />

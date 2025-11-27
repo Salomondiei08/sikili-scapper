@@ -2,44 +2,148 @@ import { PhoneModel, PriceInfo } from "./types";
 
 // Available Phone models (iPhone and Samsung)
 export const PHONE_MODELS: PhoneModel[] = [
+    // iPhone 17 Series
+    { id: "iphone-17-pro-max-256gb", name: "iPhone 17 Pro Max", brand: "Apple", series: "17 Pro Max", storage: "256GB" },
+    { id: "iphone-17-pro-max-512gb", name: "iPhone 17 Pro Max", brand: "Apple", series: "17 Pro Max", storage: "512GB" },
+    { id: "iphone-17-pro-max-1tb", name: "iPhone 17 Pro Max", brand: "Apple", series: "17 Pro Max", storage: "1TB" },
+    { id: "iphone-17-pro-max-2tb", name: "iPhone 17 Pro Max", brand: "Apple", series: "17 Pro Max", storage: "2TB" },
+    { id: "iphone-17-pro-256gb", name: "iPhone 17 Pro", brand: "Apple", series: "17 Pro", storage: "256GB" },
+    { id: "iphone-17-pro-512gb", name: "iPhone 17 Pro", brand: "Apple", series: "17 Pro", storage: "512GB" },
+    { id: "iphone-17-pro-1tb", name: "iPhone 17 Pro", brand: "Apple", series: "17 Pro", storage: "1TB" },
+    { id: "iphone-17-plus-256gb", name: "iPhone 17 Plus", brand: "Apple", series: "17 Plus", storage: "256GB" },
+    { id: "iphone-17-plus-512gb", name: "iPhone 17 Plus", brand: "Apple", series: "17 Plus", storage: "512GB" },
+    { id: "iphone-17-128gb", name: "iPhone 17", brand: "Apple", series: "17", storage: "128GB" },
+    { id: "iphone-17-256gb", name: "iPhone 17", brand: "Apple", series: "17", storage: "256GB" },
+    { id: "iphone-17-512gb", name: "iPhone 17", brand: "Apple", series: "17", storage: "512GB" },
+
     // iPhone 16 Series
     { id: "iphone-16-pro-max-256gb", name: "iPhone 16 Pro Max", brand: "Apple", series: "16 Pro Max", storage: "256GB" },
     { id: "iphone-16-pro-max-512gb", name: "iPhone 16 Pro Max", brand: "Apple", series: "16 Pro Max", storage: "512GB" },
     { id: "iphone-16-pro-max-1tb", name: "iPhone 16 Pro Max", brand: "Apple", series: "16 Pro Max", storage: "1TB" },
+    { id: "iphone-16-pro-128gb", name: "iPhone 16 Pro", brand: "Apple", series: "16 Pro", storage: "128GB" },
     { id: "iphone-16-pro-256gb", name: "iPhone 16 Pro", brand: "Apple", series: "16 Pro", storage: "256GB" },
     { id: "iphone-16-pro-512gb", name: "iPhone 16 Pro", brand: "Apple", series: "16 Pro", storage: "512GB" },
+    { id: "iphone-16-pro-1tb", name: "iPhone 16 Pro", brand: "Apple", series: "16 Pro", storage: "1TB" },
+    { id: "iphone-16-plus-128gb", name: "iPhone 16 Plus", brand: "Apple", series: "16 Plus", storage: "128GB" },
     { id: "iphone-16-plus-256gb", name: "iPhone 16 Plus", brand: "Apple", series: "16 Plus", storage: "256GB" },
+    { id: "iphone-16-plus-512gb", name: "iPhone 16 Plus", brand: "Apple", series: "16 Plus", storage: "512GB" },
     { id: "iphone-16-128gb", name: "iPhone 16", brand: "Apple", series: "16", storage: "128GB" },
     { id: "iphone-16-256gb", name: "iPhone 16", brand: "Apple", series: "16", storage: "256GB" },
+    { id: "iphone-16-512gb", name: "iPhone 16", brand: "Apple", series: "16", storage: "512GB" },
 
     // iPhone 15 Series
     { id: "iphone-15-pro-max-256gb", name: "iPhone 15 Pro Max", brand: "Apple", series: "15 Pro Max", storage: "256GB" },
     { id: "iphone-15-pro-max-512gb", name: "iPhone 15 Pro Max", brand: "Apple", series: "15 Pro Max", storage: "512GB" },
+    { id: "iphone-15-pro-max-1tb", name: "iPhone 15 Pro Max", brand: "Apple", series: "15 Pro Max", storage: "1TB" },
+    { id: "iphone-15-pro-128gb", name: "iPhone 15 Pro", brand: "Apple", series: "15 Pro", storage: "128GB" },
     { id: "iphone-15-pro-256gb", name: "iPhone 15 Pro", brand: "Apple", series: "15 Pro", storage: "256GB" },
+    { id: "iphone-15-pro-512gb", name: "iPhone 15 Pro", brand: "Apple", series: "15 Pro", storage: "512GB" },
+    { id: "iphone-15-pro-1tb", name: "iPhone 15 Pro", brand: "Apple", series: "15 Pro", storage: "1TB" },
+    { id: "iphone-15-plus-128gb", name: "iPhone 15 Plus", brand: "Apple", series: "15 Plus", storage: "128GB" },
     { id: "iphone-15-plus-256gb", name: "iPhone 15 Plus", brand: "Apple", series: "15 Plus", storage: "256GB" },
+    { id: "iphone-15-plus-512gb", name: "iPhone 15 Plus", brand: "Apple", series: "15 Plus", storage: "512GB" },
     { id: "iphone-15-128gb", name: "iPhone 15", brand: "Apple", series: "15", storage: "128GB" },
     { id: "iphone-15-256gb", name: "iPhone 15", brand: "Apple", series: "15", storage: "256GB" },
+    { id: "iphone-15-512gb", name: "iPhone 15", brand: "Apple", series: "15", storage: "512GB" },
 
     // iPhone 14 Series
+    { id: "iphone-14-pro-max-128gb", name: "iPhone 14 Pro Max", brand: "Apple", series: "14 Pro Max", storage: "128GB" },
     { id: "iphone-14-pro-max-256gb", name: "iPhone 14 Pro Max", brand: "Apple", series: "14 Pro Max", storage: "256GB" },
+    { id: "iphone-14-pro-max-512gb", name: "iPhone 14 Pro Max", brand: "Apple", series: "14 Pro Max", storage: "512GB" },
+    { id: "iphone-14-pro-max-1tb", name: "iPhone 14 Pro Max", brand: "Apple", series: "14 Pro Max", storage: "1TB" },
+    { id: "iphone-14-pro-128gb", name: "iPhone 14 Pro", brand: "Apple", series: "14 Pro", storage: "128GB" },
     { id: "iphone-14-pro-256gb", name: "iPhone 14 Pro", brand: "Apple", series: "14 Pro", storage: "256GB" },
+    { id: "iphone-14-pro-512gb", name: "iPhone 14 Pro", brand: "Apple", series: "14 Pro", storage: "512GB" },
+    { id: "iphone-14-pro-1tb", name: "iPhone 14 Pro", brand: "Apple", series: "14 Pro", storage: "1TB" },
+    { id: "iphone-14-plus-128gb", name: "iPhone 14 Plus", brand: "Apple", series: "14 Plus", storage: "128GB" },
     { id: "iphone-14-plus-256gb", name: "iPhone 14 Plus", brand: "Apple", series: "14 Plus", storage: "256GB" },
+    { id: "iphone-14-plus-512gb", name: "iPhone 14 Plus", brand: "Apple", series: "14 Plus", storage: "512GB" },
     { id: "iphone-14-128gb", name: "iPhone 14", brand: "Apple", series: "14", storage: "128GB" },
+    { id: "iphone-14-256gb", name: "iPhone 14", brand: "Apple", series: "14", storage: "256GB" },
+    { id: "iphone-14-512gb", name: "iPhone 14", brand: "Apple", series: "14", storage: "512GB" },
 
     // iPhone 13 Series
+    { id: "iphone-13-pro-max-128gb", name: "iPhone 13 Pro Max", brand: "Apple", series: "13 Pro Max", storage: "128GB" },
     { id: "iphone-13-pro-max-256gb", name: "iPhone 13 Pro Max", brand: "Apple", series: "13 Pro Max", storage: "256GB" },
+    { id: "iphone-13-pro-max-512gb", name: "iPhone 13 Pro Max", brand: "Apple", series: "13 Pro Max", storage: "512GB" },
+    { id: "iphone-13-pro-max-1tb", name: "iPhone 13 Pro Max", brand: "Apple", series: "13 Pro Max", storage: "1TB" },
+    { id: "iphone-13-pro-128gb", name: "iPhone 13 Pro", brand: "Apple", series: "13 Pro", storage: "128GB" },
     { id: "iphone-13-pro-256gb", name: "iPhone 13 Pro", brand: "Apple", series: "13 Pro", storage: "256GB" },
+    { id: "iphone-13-pro-512gb", name: "iPhone 13 Pro", brand: "Apple", series: "13 Pro", storage: "512GB" },
+    { id: "iphone-13-pro-1tb", name: "iPhone 13 Pro", brand: "Apple", series: "13 Pro", storage: "1TB" },
+    { id: "iphone-13-mini-128gb", name: "iPhone 13 mini", brand: "Apple", series: "13 mini", storage: "128GB" },
+    { id: "iphone-13-mini-256gb", name: "iPhone 13 mini", brand: "Apple", series: "13 mini", storage: "256GB" },
+    { id: "iphone-13-mini-512gb", name: "iPhone 13 mini", brand: "Apple", series: "13 mini", storage: "512GB" },
     { id: "iphone-13-128gb", name: "iPhone 13", brand: "Apple", series: "13", storage: "128GB" },
     { id: "iphone-13-256gb", name: "iPhone 13", brand: "Apple", series: "13", storage: "256GB" },
+    { id: "iphone-13-512gb", name: "iPhone 13", brand: "Apple", series: "13", storage: "512GB" },
 
     // iPhone 12 Series
+    { id: "iphone-12-pro-max-128gb", name: "iPhone 12 Pro Max", brand: "Apple", series: "12 Pro Max", storage: "128GB" },
     { id: "iphone-12-pro-max-256gb", name: "iPhone 12 Pro Max", brand: "Apple", series: "12 Pro Max", storage: "256GB" },
+    { id: "iphone-12-pro-max-512gb", name: "iPhone 12 Pro Max", brand: "Apple", series: "12 Pro Max", storage: "512GB" },
+    { id: "iphone-12-pro-128gb", name: "iPhone 12 Pro", brand: "Apple", series: "12 Pro", storage: "128GB" },
+    { id: "iphone-12-pro-256gb", name: "iPhone 12 Pro", brand: "Apple", series: "12 Pro", storage: "256GB" },
+    { id: "iphone-12-pro-512gb", name: "iPhone 12 Pro", brand: "Apple", series: "12 Pro", storage: "512GB" },
+    { id: "iphone-12-mini-64gb", name: "iPhone 12 mini", brand: "Apple", series: "12 mini", storage: "64GB" },
+    { id: "iphone-12-mini-128gb", name: "iPhone 12 mini", brand: "Apple", series: "12 mini", storage: "128GB" },
+    { id: "iphone-12-mini-256gb", name: "iPhone 12 mini", brand: "Apple", series: "12 mini", storage: "256GB" },
+    { id: "iphone-12-64gb", name: "iPhone 12", brand: "Apple", series: "12", storage: "64GB" },
     { id: "iphone-12-128gb", name: "iPhone 12", brand: "Apple", series: "12", storage: "128GB" },
     { id: "iphone-12-256gb", name: "iPhone 12", brand: "Apple", series: "12", storage: "256GB" },
 
-    // iPhone SE
+    // iPhone 11 Series
+    { id: "iphone-11-pro-max-64gb", name: "iPhone 11 Pro Max", brand: "Apple", series: "11 Pro Max", storage: "64GB" },
+    { id: "iphone-11-pro-max-256gb", name: "iPhone 11 Pro Max", brand: "Apple", series: "11 Pro Max", storage: "256GB" },
+    { id: "iphone-11-pro-max-512gb", name: "iPhone 11 Pro Max", brand: "Apple", series: "11 Pro Max", storage: "512GB" },
+    { id: "iphone-11-pro-64gb", name: "iPhone 11 Pro", brand: "Apple", series: "11 Pro", storage: "64GB" },
+    { id: "iphone-11-pro-256gb", name: "iPhone 11 Pro", brand: "Apple", series: "11 Pro", storage: "256GB" },
+    { id: "iphone-11-pro-512gb", name: "iPhone 11 Pro", brand: "Apple", series: "11 Pro", storage: "512GB" },
+    { id: "iphone-11-64gb", name: "iPhone 11", brand: "Apple", series: "11", storage: "64GB" },
+    { id: "iphone-11-128gb", name: "iPhone 11", brand: "Apple", series: "11", storage: "128GB" },
+    { id: "iphone-11-256gb", name: "iPhone 11", brand: "Apple", series: "11", storage: "256GB" },
+
+    // iPhone XR
+    { id: "iphone-xr-64gb", name: "iPhone XR", brand: "Apple", series: "XR", storage: "64GB" },
+    { id: "iphone-xr-128gb", name: "iPhone XR", brand: "Apple", series: "XR", storage: "128GB" },
+    { id: "iphone-xr-256gb", name: "iPhone XR", brand: "Apple", series: "XR", storage: "256GB" },
+
+    // iPhone XS Series
+    { id: "iphone-xs-max-64gb", name: "iPhone XS Max", brand: "Apple", series: "XS Max", storage: "64GB" },
+    { id: "iphone-xs-max-256gb", name: "iPhone XS Max", brand: "Apple", series: "XS Max", storage: "256GB" },
+    { id: "iphone-xs-max-512gb", name: "iPhone XS Max", brand: "Apple", series: "XS Max", storage: "512GB" },
+    { id: "iphone-xs-64gb", name: "iPhone XS", brand: "Apple", series: "XS", storage: "64GB" },
+    { id: "iphone-xs-256gb", name: "iPhone XS", brand: "Apple", series: "XS", storage: "256GB" },
+    { id: "iphone-xs-512gb", name: "iPhone XS", brand: "Apple", series: "XS", storage: "512GB" },
+
+    // iPhone X
+    { id: "iphone-x-64gb", name: "iPhone X", brand: "Apple", series: "X", storage: "64GB" },
+    { id: "iphone-x-256gb", name: "iPhone X", brand: "Apple", series: "X", storage: "256GB" },
+
+    // iPhone 8 Series
+    { id: "iphone-8-plus-64gb", name: "iPhone 8 Plus", brand: "Apple", series: "8 Plus", storage: "64GB" },
+    { id: "iphone-8-plus-128gb", name: "iPhone 8 Plus", brand: "Apple", series: "8 Plus", storage: "128GB" },
+    { id: "iphone-8-plus-256gb", name: "iPhone 8 Plus", brand: "Apple", series: "8 Plus", storage: "256GB" },
+    { id: "iphone-8-64gb", name: "iPhone 8", brand: "Apple", series: "8", storage: "64GB" },
+    { id: "iphone-8-128gb", name: "iPhone 8", brand: "Apple", series: "8", storage: "128GB" },
+    { id: "iphone-8-256gb", name: "iPhone 8", brand: "Apple", series: "8", storage: "256GB" },
+
+    // iPhone 7 Series
+    { id: "iphone-7-plus-32gb", name: "iPhone 7 Plus", brand: "Apple", series: "7 Plus", storage: "32GB" },
+    { id: "iphone-7-plus-128gb", name: "iPhone 7 Plus", brand: "Apple", series: "7 Plus", storage: "128GB" },
+    { id: "iphone-7-plus-256gb", name: "iPhone 7 Plus", brand: "Apple", series: "7 Plus", storage: "256GB" },
+    { id: "iphone-7-32gb", name: "iPhone 7", brand: "Apple", series: "7", storage: "32GB" },
+    { id: "iphone-7-128gb", name: "iPhone 7", brand: "Apple", series: "7", storage: "128GB" },
+    { id: "iphone-7-256gb", name: "iPhone 7", brand: "Apple", series: "7", storage: "256GB" },
+
+    // iPhone SE Series
+    { id: "iphone-se-3rd-64gb", name: "iPhone SE (3rd gen)", brand: "Apple", series: "SE", storage: "64GB" },
     { id: "iphone-se-3rd-128gb", name: "iPhone SE (3rd gen)", brand: "Apple", series: "SE", storage: "128GB" },
     { id: "iphone-se-3rd-256gb", name: "iPhone SE (3rd gen)", brand: "Apple", series: "SE", storage: "256GB" },
+    { id: "iphone-se-2nd-64gb", name: "iPhone SE (2nd gen)", brand: "Apple", series: "SE", storage: "64GB" },
+    { id: "iphone-se-2nd-128gb", name: "iPhone SE (2nd gen)", brand: "Apple", series: "SE", storage: "128GB" },
+    { id: "iphone-se-2nd-256gb", name: "iPhone SE (2nd gen)", brand: "Apple", series: "SE", storage: "256GB" },
+
 
     // Samsung Galaxy S24 Series
     { id: "samsung-s24-ultra-256gb", name: "Galaxy S24 Ultra", brand: "Samsung", series: "S24 Ultra", storage: "256GB" },
@@ -83,18 +187,22 @@ export async function scrapePrices(modelId: string): Promise<PriceInfo[]> {
         { name: "Best Buy", url: "https://bestbuy.com", country: "United States", code: "US", currency: "USD" },
         { name: "Amazon US", url: "https://amazon.com", country: "United States", code: "US", currency: "USD" },
         { name: "B&H Photo", url: "https://bhphotovideo.com", country: "United States", code: "US", currency: "USD" },
+        { name: "Back Market US", url: "https://backmarket.com", country: "United States", code: "US", currency: "USD" },
 
         // UK
         { name: "Apple Store UK", url: "https://apple.com/uk", country: "United Kingdom", code: "GB", currency: "GBP" },
         { name: "Currys", url: "https://currys.co.uk", country: "United Kingdom", code: "GB", currency: "GBP" },
         { name: "Amazon UK", url: "https://amazon.co.uk", country: "United Kingdom", code: "GB", currency: "GBP" },
+        { name: "Back Market UK", url: "https://backmarket.co.uk", country: "United Kingdom", code: "GB", currency: "GBP" },
 
         // Europe
         { name: "Apple Store Germany", url: "https://apple.com/de", country: "Germany", code: "DE", currency: "EUR" },
         { name: "MediaMarkt", url: "https://mediamarkt.de", country: "Germany", code: "DE", currency: "EUR" },
         { name: "Amazon DE", url: "https://amazon.de", country: "Germany", code: "DE", currency: "EUR" },
+        { name: "Back Market DE", url: "https://backmarket.de", country: "Germany", code: "DE", currency: "EUR" },
         { name: "Fnac France", url: "https://fnac.com", country: "France", code: "FR", currency: "EUR" },
         { name: "Auchan France", url: "https://auchan.fr", country: "France", code: "FR", currency: "EUR" },
+        { name: "Back Market FR", url: "https://backmarket.fr", country: "France", code: "FR", currency: "EUR" },
 
         // Asia
         { name: "Apple Store Japan", url: "https://apple.com/jp", country: "Japan", code: "JP", currency: "JPY" },
@@ -150,6 +258,8 @@ export async function scrapePrices(modelId: string): Promise<PriceInfo[]> {
             deepLink = `${retailer.url}/shop/buy-iphone/${modelId.split('-').slice(0, 2).join('-')}`;
         } else if (retailer.name.includes("Jumia")) {
             deepLink = `${retailer.url}/${productPath}.html`;
+        } else if (retailer.name.includes("Back Market")) {
+            deepLink = `${retailer.url}/p/${productPath}`;
         } else {
             deepLink = `${retailer.url}/product/${productPath}`;
         }
@@ -192,34 +302,148 @@ function getRegionalMarkup(country: string): number {
 function getBasePrice(modelId: string): number {
     // Base prices in USD
     const prices: Record<string, number> = {
-        // iPhone prices
+        // iPhone 17 prices (estimated future pricing)
+        "iphone-17-pro-max-256gb": 1299,
+        "iphone-17-pro-max-512gb": 1499,
+        "iphone-17-pro-max-1tb": 1699,
+        "iphone-17-pro-max-2tb": 1899,
+        "iphone-17-pro-256gb": 1099,
+        "iphone-17-pro-512gb": 1299,
+        "iphone-17-pro-1tb": 1499,
+        "iphone-17-plus-256gb": 949,
+        "iphone-17-plus-512gb": 1049,
+        "iphone-17-128gb": 849,
+        "iphone-17-256gb": 949,
+        "iphone-17-512gb": 1049,
+
+        // iPhone 16 prices
         "iphone-16-pro-max-256gb": 1199,
         "iphone-16-pro-max-512gb": 1399,
         "iphone-16-pro-max-1tb": 1599,
+        "iphone-16-pro-128gb": 899,
         "iphone-16-pro-256gb": 999,
         "iphone-16-pro-512gb": 1199,
+        "iphone-16-pro-1tb": 1399,
+        "iphone-16-plus-128gb": 799,
         "iphone-16-plus-256gb": 899,
+        "iphone-16-plus-512gb": 999,
         "iphone-16-128gb": 799,
         "iphone-16-256gb": 899,
+        "iphone-16-512gb": 999,
+
+        // iPhone 15 prices
         "iphone-15-pro-max-256gb": 1099,
         "iphone-15-pro-max-512gb": 1299,
+        "iphone-15-pro-max-1tb": 1499,
+        "iphone-15-pro-128gb": 799,
         "iphone-15-pro-256gb": 899,
+        "iphone-15-pro-512gb": 1099,
+        "iphone-15-pro-1tb": 1299,
+        "iphone-15-plus-128gb": 699,
         "iphone-15-plus-256gb": 799,
+        "iphone-15-plus-512gb": 899,
         "iphone-15-128gb": 699,
         "iphone-15-256gb": 799,
+        "iphone-15-512gb": 899,
+
+        // iPhone 14 prices
+        "iphone-14-pro-max-128gb": 899,
         "iphone-14-pro-max-256gb": 999,
+        "iphone-14-pro-max-512gb": 1199,
+        "iphone-14-pro-max-1tb": 1399,
+        "iphone-14-pro-128gb": 699,
         "iphone-14-pro-256gb": 799,
+        "iphone-14-pro-512gb": 999,
+        "iphone-14-pro-1tb": 1199,
+        "iphone-14-plus-128gb": 599,
         "iphone-14-plus-256gb": 699,
+        "iphone-14-plus-512gb": 799,
         "iphone-14-128gb": 599,
+        "iphone-14-256gb": 699,
+        "iphone-14-512gb": 799,
+
+        // iPhone 13 prices
+        "iphone-13-pro-max-128gb": 799,
         "iphone-13-pro-max-256gb": 899,
+        "iphone-13-pro-max-512gb": 1099,
+        "iphone-13-pro-max-1tb": 1299,
+        "iphone-13-pro-128gb": 599,
         "iphone-13-pro-256gb": 699,
+        "iphone-13-pro-512gb": 899,
+        "iphone-13-pro-1tb": 1099,
+        "iphone-13-mini-128gb": 499,
+        "iphone-13-mini-256gb": 599,
+        "iphone-13-mini-512gb": 699,
         "iphone-13-128gb": 599,
         "iphone-13-256gb": 699,
+        "iphone-13-512gb": 799,
+
+        // iPhone 12 prices
+        "iphone-12-pro-max-128gb": 699,
         "iphone-12-pro-max-256gb": 799,
+        "iphone-12-pro-max-512gb": 999,
+        "iphone-12-pro-128gb": 599,
+        "iphone-12-pro-256gb": 699,
+        "iphone-12-pro-512gb": 899,
+        "iphone-12-mini-64gb": 399,
+        "iphone-12-mini-128gb": 449,
+        "iphone-12-mini-256gb": 549,
+        "iphone-12-64gb": 449,
         "iphone-12-128gb": 499,
         "iphone-12-256gb": 599,
+
+        // iPhone 11 prices
+        "iphone-11-pro-max-64gb": 599,
+        "iphone-11-pro-max-256gb": 699,
+        "iphone-11-pro-max-512gb": 899,
+        "iphone-11-pro-64gb": 499,
+        "iphone-11-pro-256gb": 599,
+        "iphone-11-pro-512gb": 799,
+        "iphone-11-64gb": 399,
+        "iphone-11-128gb": 449,
+        "iphone-11-256gb": 549,
+
+        // iPhone XR prices
+        "iphone-xr-64gb": 349,
+        "iphone-xr-128gb": 399,
+        "iphone-xr-256gb": 499,
+
+        // iPhone XS prices
+        "iphone-xs-max-64gb": 449,
+        "iphone-xs-max-256gb": 549,
+        "iphone-xs-max-512gb": 699,
+        "iphone-xs-64gb": 349,
+        "iphone-xs-256gb": 449,
+        "iphone-xs-512gb": 599,
+
+        // iPhone X prices
+        "iphone-x-64gb": 299,
+        "iphone-x-256gb": 399,
+
+        // iPhone 8 prices
+        "iphone-8-plus-64gb": 249,
+        "iphone-8-plus-128gb": 299,
+        "iphone-8-plus-256gb": 399,
+        "iphone-8-64gb": 199,
+        "iphone-8-128gb": 249,
+        "iphone-8-256gb": 349,
+
+        // iPhone 7 prices
+        "iphone-7-plus-32gb": 179,
+        "iphone-7-plus-128gb": 229,
+        "iphone-7-plus-256gb": 329,
+        "iphone-7-32gb": 129,
+        "iphone-7-128gb": 179,
+        "iphone-7-256gb": 279,
+
+        // iPhone SE prices
+        "iphone-se-3rd-64gb": 379,
         "iphone-se-3rd-128gb": 429,
         "iphone-se-3rd-256gb": 479,
+        "iphone-se-2nd-64gb": 249,
+        "iphone-se-2nd-128gb": 299,
+        "iphone-se-2nd-256gb": 399,
+
 
         // Samsung prices
         "samsung-s24-ultra-256gb": 1299,
@@ -271,15 +495,5 @@ function getCurrencyRate(currency: string): number {
 export const CURRENCIES = [
     { code: "USD", name: "US Dollar", symbol: "$" },
     { code: "EUR", name: "Euro", symbol: "€" },
-    { code: "GBP", name: "British Pound", symbol: "£" },
-    { code: "JPY", name: "Japanese Yen", symbol: "¥" },
-    { code: "CNY", name: "Chinese Yuan", symbol: "¥" },
-    { code: "AUD", name: "Australian Dollar", symbol: "A$" },
-    { code: "CAD", name: "Canadian Dollar", symbol: "C$" },
     { code: "XOF", name: "West African CFA Franc", symbol: "CFA" },
-    { code: "NGN", name: "Nigerian Naira", symbol: "₦" },
-    { code: "KES", name: "Kenyan Shilling", symbol: "KSh" },
-    { code: "ZAR", name: "South African Rand", symbol: "R" },
-    { code: "EGP", name: "Egyptian Pound", symbol: "E£" },
-    { code: "MAD", name: "Moroccan Dirham", symbol: "DH" },
 ];

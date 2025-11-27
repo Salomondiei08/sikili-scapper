@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/table"
 import { ExternalLink, TrendingDown, TrendingUp } from "lucide-react"
 import { useState } from "react"
+import { formatCurrency } from "@/lib/utils"
 
 interface PriceTableProps {
     prices: PriceInfo[];
@@ -118,12 +119,12 @@ export function PriceTable({ prices, targetCurrency, exchangeRates }: PriceTable
                                         </TableCell>
                                         <TableCell>
                                             <span className="font-mono">
-                                                {getCurrencySymbol(price.currency)}{price.price.toLocaleString()}
+                                                {formatCurrency(price.price, price.currency, getCurrencySymbol(price.currency))}
                                             </span>
                                         </TableCell>
                                         <TableCell>
                                             <span className="font-mono font-semibold text-primary">
-                                                {getCurrencySymbol(targetCurrency)}{price.convertedPrice.toFixed(2)}
+                                                {formatCurrency(price.convertedPrice, targetCurrency, getCurrencySymbol(targetCurrency))}
                                             </span>
                                         </TableCell>
                                         <TableCell>
