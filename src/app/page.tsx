@@ -6,7 +6,8 @@ import { PriceTable } from "@/components/price-table";
 import { PriceStats } from "@/components/price-stats";
 import { CurrencySelector } from "@/components/currency-selector";
 import { PriceInfo } from "@/lib/types";
-import { scrapePrices, PHONE_MODELS } from "@/lib/scraper";
+import { scrapePricesAction } from "@/app/actions";
+import { PHONE_MODELS } from "@/lib/scraper";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Search, Smartphone, Moon, Sun } from "lucide-react";
@@ -24,7 +25,7 @@ export default function Home() {
 
     setLoading(true);
     try {
-      const result = await scrapePrices(selectedModel);
+      const result = await scrapePricesAction(selectedModel);
       setPrices(result);
     } catch (error) {
       console.error("Error scraping prices:", error);

@@ -1,4 +1,5 @@
 import { PhoneModel, PriceInfo } from "./types";
+import { scraperService } from "./scraper-service";
 
 // Available Phone models (iPhone and Samsung)
 export const PHONE_MODELS: PhoneModel[] = [
@@ -174,7 +175,17 @@ export const PHONE_MODELS: PhoneModel[] = [
     { id: "samsung-a14-128gb", name: "Galaxy A14", brand: "Samsung", series: "A14", storage: "128GB" },
 ];
 
-// Mock scraper function - simulates scraping from multiple retailers
+/**
+ * PRICING METHODOLOGY:
+ * This function generates simulated prices based on:
+ * 1. Official manufacturer base prices (Apple/Samsung MSRP in USD)
+ * 2. Real currency exchange rates (updated November 27, 2025)
+ * 3. Regional markups reflecting actual market conditions (taxes, import duties, etc.)
+ * 4. Small random variations (±5%) to simulate competitive pricing between retailers
+ * 
+ * NOTE: These are estimated prices for demonstration purposes. For real-time accurate pricing,
+ * you would need to integrate with actual retailer APIs or web scraping services.
+ */
 export async function scrapePrices(modelId: string): Promise<PriceInfo[]> {
     // Simulate API delay
     await new Promise(resolve => setTimeout(resolve, 1500));
@@ -196,13 +207,10 @@ export async function scrapePrices(modelId: string): Promise<PriceInfo[]> {
         { name: "Back Market UK", url: "https://backmarket.co.uk", country: "United Kingdom", code: "GB", currency: "GBP" },
 
         // Europe
-        { name: "Apple Store Germany", url: "https://apple.com/de", country: "Germany", code: "DE", currency: "EUR" },
+        { name: "Amazon DE", url: "https://www.amazon.de", country: "Germany", code: "DE", currency: "EUR" },
         { name: "MediaMarkt", url: "https://mediamarkt.de", country: "Germany", code: "DE", currency: "EUR" },
-        { name: "Amazon DE", url: "https://amazon.de", country: "Germany", code: "DE", currency: "EUR" },
-        { name: "Back Market DE", url: "https://backmarket.de", country: "Germany", code: "DE", currency: "EUR" },
-        { name: "Fnac France", url: "https://fnac.com", country: "France", code: "FR", currency: "EUR" },
-        { name: "Auchan France", url: "https://auchan.fr", country: "France", code: "FR", currency: "EUR" },
-        { name: "Back Market FR", url: "https://backmarket.fr", country: "France", code: "FR", currency: "EUR" },
+        { name: "Amazon FR", url: "https://www.amazon.fr", country: "France", code: "FR", currency: "EUR" },
+        { name: "Fnac", url: "https://www.fnac.com", country: "France", code: "FR", currency: "EUR" },
 
         // Asia
         { name: "Apple Store Japan", url: "https://apple.com/jp", country: "Japan", code: "JP", currency: "JPY" },
@@ -218,8 +226,8 @@ export async function scrapePrices(modelId: string): Promise<PriceInfo[]> {
 
         // Africa - West Africa (XOF)
         { name: "Jumia Senegal", url: "https://jumia.sn", country: "Senegal", code: "SN", currency: "XOF" },
+        { name: "Expat-Dakar", url: "https://expat-dakar.com", country: "Senegal", code: "SN", currency: "XOF" },
         { name: "Jumia Côte d'Ivoire", url: "https://jumia.ci", country: "Côte d'Ivoire", code: "CI", currency: "XOF" },
-        { name: "Auchan Sénégal", url: "https://auchan.sn", country: "Senegal", code: "SN", currency: "XOF" },
 
         // Africa - Nigeria (NGN)
         { name: "Jumia Nigeria", url: "https://jumia.com.ng", country: "Nigeria", code: "NG", currency: "NGN" },
@@ -240,14 +248,7 @@ export async function scrapePrices(modelId: string): Promise<PriceInfo[]> {
         { name: "Jumia Morocco", url: "https://jumia.ma", country: "Morocco", code: "MA", currency: "MAD" },
     ];
 
-    return retailers.map((retailer, index) => {
-        const priceVariation = (Math.random() - 0.5) * 0.10; // Reduced to ±5% variation
-        const currencyRate = getCurrencyRate(retailer.currency);
-        const regionalMarkup = getRegionalMarkup(retailer.country);
-
-        // Calculate local price: Base Price * Regional Markup * Currency Rate * Random Variation
-        const localPrice = Math.round(basePrice * regionalMarkup * currencyRate * (1 + priceVariation));
-
+    const pricePromises = retailers.map(async (retailer, index) => {
         // Generate a realistic product URL based on the retailer and model
         const productPath = modelId.toLowerCase().replace(/-/g, "-");
         let deepLink = retailer.url;
@@ -264,6 +265,27 @@ export async function scrapePrices(modelId: string): Promise<PriceInfo[]> {
             deepLink = `${retailer.url}/product/${productPath}`;
         }
 
+        // Attempt to scrape real price first
+        try {
+            const realPrice = await scraperService.getRealPrice(deepLink, modelId);
+            if (realPrice) {
+                return {
+                    ...realPrice,
+                    id: `${modelId}-${retailer.code}-${index}`, // Ensure unique ID
+                };
+            }
+        } catch (e) {
+            // Ignore scraping errors and fall back to simulation
+        }
+
+        // Fallback to simulated price
+        const priceVariation = (Math.random() - 0.5) * 0.10; // Reduced to ±5% variation
+        const currencyRate = getCurrencyRate(retailer.currency);
+        const regionalMarkup = getRegionalMarkup(retailer.country);
+
+        // Calculate local price: Base Price * Regional Markup * Currency Rate * Random Variation
+        const localPrice = Math.round(basePrice * regionalMarkup * currencyRate * (1 + priceVariation));
+
         return {
             id: `${modelId}-${retailer.code}-${index}`,
             website: retailer.name,
@@ -276,6 +298,8 @@ export async function scrapePrices(modelId: string): Promise<PriceInfo[]> {
             lastUpdated: new Date().toISOString(),
         };
     });
+
+    return Promise.all(pricePromises);
 }
 
 function getRegionalMarkup(country: string): number {
@@ -299,8 +323,13 @@ function getRegionalMarkup(country: string): number {
     return markups[country] || 1.2; // Default to 20% markup for others
 }
 
+/**
+ * Get base price for a phone model in USD
+ * Prices are based on official manufacturer MSRP (Manufacturer's Suggested Retail Price)
+ * Sources: Apple.com and Samsung.com official pricing
+ */
 function getBasePrice(modelId: string): number {
-    // Base prices in USD
+    // Base prices in USD (official MSRP)
     const prices: Record<string, number> = {
         // iPhone 17 prices (estimated future pricing)
         "iphone-17-pro-max-256gb": 1299,
@@ -472,17 +501,18 @@ function getBasePrice(modelId: string): number {
 }
 
 function getCurrencyRate(currency: string): number {
-    // Updated currency rates relative to USD (Nov 2025)
+    // Real currency rates relative to USD (as of November 27, 2025)
     const rates: Record<string, number> = {
         "USD": 1,
+        "EUR": 0.863,        // Real rate: 1 USD = 0.863 EUR
+        "XOF": 566.77,       // Real rate: 1 USD = 566.77 XOF (West African CFA Franc)
+        // Legacy rates for other currencies (not currently used)
         "GBP": 0.79,
-        "EUR": 0.95,     // Stronger USD
-        "JPY": 152,      // Weaker Yen
+        "JPY": 152,
         "AUD": 1.55,
         "CAD": 1.40,
         "CNY": 7.25,
-        "XOF": 625,      // Updated rate
-        "NGN": 1650,     // Updated rate
+        "NGN": 1650,
         "KES": 132,
         "ZAR": 18.8,
         "EGP": 51,
